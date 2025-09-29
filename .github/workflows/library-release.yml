@@ -62,7 +62,8 @@ jobs:
         if: matrix.os == 'windows-11-arm'
         shell: pwsh
         run: |
-          make release TARGET=${{ matrix.target }}
+          $env:TARGET_ARCH = "aarch64"
+          ./make_release.ps1
 
       - name: Build release
         if: matrix.os != 'windows-latest' && matrix.os != 'windows-11-arm'
